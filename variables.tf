@@ -33,19 +33,38 @@ variable "use_client_authentication" {
   default     = false
 }
 
+#######
+# Kafka
+#######
 variable "kafka_version" {
   description = "Desired Kafka software version"
   type        = string
   default     = "2.2.1"
 }
 
+#########
+# Network
+#########
+variable "subnet_ids" {
+  description = "A list of subnets to connect to in the client VPC"
+  type        = list(string)
+  default     = null
+}
+
+variable "vpc_id" {
+  description = "The VPC ID for the MSK Cluster"
+  type        = string
+  default     = ""
+}
+
+########
+# Broker
+########
 variable "num_of_broker_nodes" {
   description = "Desired total number of broker nodes in the kafka cluster. It must be a multiple of the number of specified client subnets"
   type        = number
   default     = 3
 }
-
-## Broker Node Information
 
 variable "broker_node_instance_type" {
   description = "Instance type to use for the Kafka brokers"
@@ -59,10 +78,8 @@ variable "broker_ebs_volume_size" {
   default     = 100
 }
 
-variable "subnet_ids" {
-  description = "A list of subnets to connect to in the client VPC"
-  type        = list(string)
-  default     = null
+variable "create_open_monitoring" {
+  description = "Bool to create prometheus exporters on ports "
 }
 
 variable "additional_security_groups" {
@@ -177,11 +194,6 @@ variable "create_cw_alarm" {
 }
 
 ## VPC
-variable "vpc_id" {
-  description = "The VPC ID for the MSK Cluster"
-  type        = string
-  default     = ""
-}
 
 variable "tags" {
   description = "Additional tags to apply to all module resources"

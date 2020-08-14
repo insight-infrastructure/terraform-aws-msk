@@ -27,6 +27,29 @@ resource "aws_msk_cluster" "this" {
     encryption_at_rest_kms_key_arn = var.create_kms_key == "" ? aws_kms_key.kms[0].arn : var.custom_kms_key
   }
 
+  dynamic "open_monitoring" {
+    for_each = var.create_open_monitoring != null ? [1] : []
+    prometheus {
+      jmx_exporter {
+        enabled_in_broker = true
+      }
+      node_exporter {
+        enabled_in_broker = true
+      }
+    }
+  }
+
+  open_monitoring {
+    prometheus {
+      jmx_exporter {
+        enabled_in_broker = true
+      }
+      node_exporter {
+        enabled_in_broker = true
+      }
+    }
+  }
+
   //  encryption_info {
   //    encryption_in_transit {
   //      client_broker = var.client_broker_encryption

@@ -49,6 +49,7 @@ No issue is creating limit on this module.
 | create\_cw\_alarm | Whether or not to create a Broker Diskspace CloudWatch Alarm | `bool` | `false` | no |
 | create\_dashboard | Whether or not to create the MSK Dashboard | `bool` | `false` | no |
 | create\_kms\_key | Bool to create kms key | `bool` | `true` | no |
+| create\_open\_monitoring | Bool to create prometheus exporters on ports | `any` | n/a | yes |
 | custom\_configuration\_description | Description of the MSK Custom configuration | `string` | `""` | no |
 | custom\_kms\_key | ARN to kms key to use instead of creating | `string` | n/a | yes |
 | dashboard\_template | Location for the custom MSK Dashboard template | `string` | `""` | no |
