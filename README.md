@@ -5,7 +5,7 @@
 
 ## Features
 
-This module...
+This module sets up a MSK cluster without a VPC.
 
 ## Terraform Versions
 
@@ -13,10 +13,10 @@ For Terraform v0.12.0+
 
 ## Usage
 
-```
+```hcl-terraform
 module "this" {
-    source = "github.com/insight-infrastructure/terraform-aws-msk"
-
+  source = "github.com/insight-infrastructure/terraform-aws-msk"
+  
 }
 ```
 ## Examples
@@ -102,6 +102,8 @@ Module managed by [insight-infrastructure](https://github.com/insight-infrastruc
 
 ## Credits
 
+- [hyprnz](https://github.com/hyprnz/terraform-aws-msk-module)
+    - Major credit for this repo
 - [Anton Babenko](https://github.com/antonbabenko)
 
 ## License
